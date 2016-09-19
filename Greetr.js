@@ -31,6 +31,11 @@
     self.language  = language  || 'en'
   }
 
+  // Creating a prototype to add methods to my object
+  Greetr.prototype = {}
+
+  // Set my prototype to the returning object's prototype
+  Greetr.init.prototype = Greetr.prototype;
   global.Greetr = global.G$ = Greetr;
  
 }(window, jQuery));
