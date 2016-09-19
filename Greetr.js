@@ -32,7 +32,52 @@
   }
 
   // Creating a prototype to add methods to my object
-  Greetr.prototype = {}
+  Greetr.prototype = {
+    fullName: function(){
+      return this.firstName + ' ' + this.lastName;
+    },
+    validate: function(){
+      if (supportedLangs.indexOf(this.language) === -1) {
+        throw "Invalid language";
+      }
+    },
+    greeting: function() {
+      return greetings[this.language] + ' ' + this.firstName;
+    },
+    formalGreetings: function(){
+      return formalGreetings[this.language] + ' ' + this.fullName();
+    },
+    greet: function(){
+      var msg;
+
+      // if undefined or null it will be coerced to 'false'
+      if (formal) {
+        msg = this.formalGreetings();
+      }
+      else {
+        msg = this.greeting();
+      }
+
+      if (console) {
+        console.log(msg);
+      }
+      // 'this' referes to the calling object at execution time
+      // make the methid chainable
+      return this;
+    },
+    log: function() {
+      if (console) {
+        console.log(logMessages[this.language] + ':' + this.fullName());
+
+        return this;
+      }
+    },
+    setLang: function(lang){
+      this.language = lang;
+      this.validate();
+      return this;
+    }
+  }
 
   // Set my prototype to the returning object's prototype
   Greetr.init.prototype = Greetr.prototype;
