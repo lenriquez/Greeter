@@ -11,5 +11,7 @@
     self.lastName  = lastName  || '' ;
     self.language  = language  || 'en'
   }
+
+  global.Greetr = global.G$ = Greetr;
  
 }(window, jQuery));
