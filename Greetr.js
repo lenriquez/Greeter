@@ -20,7 +20,7 @@
 
   // Construture 
   var Greetr = function(firstName, lastName, language){
-    return new Greetr.init(firstName. lastName, language);
+    return new Greetr.init(firstName, lastName, language);
   }
 
   // Object Constructure
@@ -42,12 +42,12 @@
       }
     },
     greeting: function() {
-      return greetings[this.language] + ' ' + this.firstName;
+      return greetings[this.language] + ' ' + this.firstName + "!";
     },
     formalGreetings: function(){
       return formalGreetings[this.language] + ' ' + this.fullName();
     },
-    greet: function(){
+    greet: function(formal){
       var msg;
 
       // if undefined or null it will be coerced to 'false'
@@ -74,10 +74,12 @@
     },
     setLang: function(lang){
       this.language = lang;
+
       this.validate();
+
       return this;
     }
-  }
+  };
 
   // Set my prototype to the returning object's prototype
   Greetr.init.prototype = Greetr.prototype;
